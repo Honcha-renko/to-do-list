@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_223132) do
   enable_extension "plpgsql"
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "text"
     t.integer "tag"
     t.boolean "done", default: false
