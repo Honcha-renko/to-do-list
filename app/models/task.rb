@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
-  enum tag: %i[notag postponed important]
+  enum tag: %i[postponed important urgent]
 
   validates :title, presence: true, length: { maximum: 100 }
-  validates :tag, presence: true
+  validates :done, presence: true
 end
