@@ -1,7 +1,4 @@
-# rails db:seed
-# Examples:
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# frozen_string_literal: true
 
 ActiveRecord::Base.transaction do
   Task.create!(title: 'title1', text: 'text 1', tag: :urgent, done: :false, expire_on: DateTime.new(2020, 5, 11, 17) )
