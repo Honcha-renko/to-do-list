@@ -1,9 +1,8 @@
 class TasksController < ApplicationController
-  def new
-    puts "create action...may be"
+  def index
+
   end
 
-  def create
-    render plain: params[:task].inspect
-  end
+
+
 end
