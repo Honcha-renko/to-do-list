@@ -11,6 +11,11 @@
   </p>
 
   <p>
+    <%= form.label :tag %><br>
+    <%= form.select :tag, options_for_select(Task.tags.to_a) %>
+  </p>
+
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
