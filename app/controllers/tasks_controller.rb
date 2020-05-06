@@ -12,23 +12,18 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.save
+    @task = Task.create(task_params)
     redirect_to @task
   end
 
   def update
     @task = Task.find(params[:id])
-    if @task.update(task_params)
-      redirect_to @task
-    else
-      render 'edit'
-    end
+    redirect_to @task if @task.update(task_params)
   end
 
   def destroy
     Task.find(params[:id]).destroy
-     redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
