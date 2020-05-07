@@ -1,24 +1,27 @@
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<div style="text-align: center; word-wrap: break-word">
+    <p>
+      <strong>Title:</strong>
+      <%= @task.title %>
+    </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @task.text %>
-</p>
+    <p>
+      <strong>Text:</strong>
+      <%= @task.text %>
+    </p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @task.tag %>
-</p>
+    <p>
+      <strong>Tag:</strong>
+      <%= @task.tag %>
+    </p>
 
-<p>
-  <strong>Done:</strong>
-  <%= @task.done %>
-</p>
+    <p>
+      <strong>Done:</strong>
+      <%= @task.done %>
+    </p>
 
-<p>
-  <strong>Expire on:</strong>
-  <%= @task.expire_on %>
-</p>
+    <p>
+      <strong>Expire on:</strong>
+      <%= @task.expire_on.strftime("%F %T") unless @task.expire_on.nil? %>
+    </p>
+    <%= link_to "Back", tasks_path%>
+</div>

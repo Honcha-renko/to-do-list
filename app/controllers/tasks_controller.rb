@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-
+#  @sorting = [true,false]
   def index
-    @tasks = Task.all
+    @tasks = Task.order(tag: :asc)
   end
 
   def new

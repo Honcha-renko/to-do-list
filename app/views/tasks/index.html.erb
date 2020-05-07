@@ -3,15 +3,21 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Text</th>
+    <th>Tag</th>
+    <th>Done</th>
+    <th>Expire on</th>
     <th></th>
   </tr>
 
   <% @tasks.each do |task| %>
+<!--<%# if task.done %>//-->another style
     <tr>
       <td><%= task.title %></td>
-      <td><%= task.text %></td>
+      <td><%= task.tag %></td>
+      <td><%= task.done %></td>
+      <td><%=task.expire_on.strftime("%F %T") unless task.expire_on.nil?%></td>
       <td><%= link_to 'Show', task_path(task) %></td>
+<!--      <td><%#= link_to 'Edit', task, :method => :put %></td>-->
       <td><%= link_to "Delete", task, :method => :delete%></td>
     </tr>
   <% end %>
