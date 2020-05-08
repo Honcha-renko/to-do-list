@@ -1,5 +1,6 @@
 <h1>Listing tasks</h1>
-<%= link_to "New", new_task_path, method: :get%>
+<%#= link_to "New", render ('_partial/new'), method: :get%>
+<%= link_to "New",new_task_path, method: :get%>
 <table>
   <tr>
     <th>Title</th>
@@ -10,15 +11,18 @@
   </tr>
 
   <% @tasks.each do |task| %>
-<!--<%# if task.done %>//another style-->
     <tr>
-      <td><%= task.title %></td>
+      <% if task.done %>
+      <td style="background: aquamarine; text-decoration: line-through;"><%= task.title %></td>
+        <% else %>
+        <td><%= task.title %></td>
+        <% end %>
       <td><%= task.tag %></td>
       <td><%= task.done %></td>
-      <td><%=task.expire_on.strftime("%F %T") unless task.expire_on.nil?%></td>
+      <td><%= task.expire_on.strftime("%F %T") unless task.expire_on.nil? %></td>
       <td><%= link_to 'Show', task_path(task) %></td>
-<!--      <td><%#= link_to 'Edit', task, :method => :put %></td>-->
-      <td><%= link_to "Delete", task, :method => :delete%></td>
+      <td><%= link_to 'Edit', task, :method => :put %></td>
+      <td><%= link_to "Delete", task, :method => :delete %></td>
     </tr>
   <% end %>
 </table>

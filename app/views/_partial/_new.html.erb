@@ -1,0 +1,25 @@
+<%= form_with scope: :task,url: tasks_path, local:true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.label :tag %><br>
+    <%= form.select :tag, options_for_select(Task.tags.to_a) %>
+  </p>
+
+  <p>
+    <%= form.label :expire_on %><br>
+    <%=form.text_field :expire_on, placeholder: 'example: 2020-05-11 17:00:00'%>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
