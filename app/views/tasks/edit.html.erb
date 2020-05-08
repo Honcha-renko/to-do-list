@@ -1,5 +1,5 @@
 <%= form_with scope: :task, url: tasks_path, local:true do |form| %>
-  <h1>Create new task</h1>
+  <h1>Edit task</h1>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -12,15 +12,20 @@
 
   <p>
     <%= form.label :tag %><br>
-    <%= form.select :tag, options_for_select(Task.tags.to_a) %>
+    <%= form.select :tag, options_for_select(Task.tags.to_a,'') %>
   </p>
 
   <p>
     <%= form.label :expire_on %><br>
-    <%=form.text_field :expire_on, placeholder: 'example: 2020-05-11 17:00:00'%>
+    <%=form.text_field :expire_on, placeholder: 'example: 2020-05-11 17:00'%>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.label :done %><br>
+    <%=form.select :done, options_for_select([true ,false]) %>
   </p>
-<% end %>
+
+  <p>
+    <%= form.submit "Update" %>
+  </p>
+<%end %>
