@@ -32,8 +32,9 @@ class TasksController < ApplicationController
   private
 
   def find_task
-    @task = Task.find(params[:id])
-    redirect_to tasks_path, message: "User with #{params[:id]} id doesn\'t exist" unless Task.exists?(params[:id])
+    return @task = Task.find(params[:id]) if Task.exists?(params[:id])
+
+    redirect_to tasks_path, message: "User with #{params[:id]} id doesn\'t exist"
   end
 
   def task_params
