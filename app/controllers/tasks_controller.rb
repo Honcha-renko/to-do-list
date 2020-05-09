@@ -2,7 +2,7 @@
 
 # class with CRUD operations
 class TasksController < ApplicationController
-  before_action :find_task, only: %i[show edit destroy]
+  before_action :find_task, only: %i[show edit update destroy]
 
   def index
     @tasks = Task.order(tag: :asc)
@@ -12,14 +12,15 @@ class TasksController < ApplicationController
 
   def show; end
 
+  def edit; end
+
   def create
     @task = Task.create(task_params)
-    binding.pry
     redirect_to @task
   end
 
   def update
-    @task.update(oth_params)
+    @task.update!(task_params)
     redirect_to @task
   end
 
@@ -38,9 +39,5 @@ class TasksController < ApplicationController
   def task_params
     params['task']['tag'] = params['task']['tag'].to_i
     params.require(:task).permit(:title, :text, :tag, :done, :expire_on)
-  end
-
-  def oth_params
-    params.permit(:title, :text, :tag, :done, :expire_on)
   end
 end

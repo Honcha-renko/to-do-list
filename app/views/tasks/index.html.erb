@@ -20,7 +20,7 @@
       <td><%= task.done %></td>
       <td><%= task.expire_on.strftime("%F %T") unless task.expire_on.nil? %></td>
       <td><%= link_to 'Show', task_path(task) %></td>
-      <td><%= link_to 'Edit', edit_task_path(task), method: :get%></td>
+      <td><%= link_to 'Edit', edit_task_path(task), method: :get %></td>
       <td><%= link_to "Delete", task, method: :delete %></td>
     </tr>
   <% end %>
