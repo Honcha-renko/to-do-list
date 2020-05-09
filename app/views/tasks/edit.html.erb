@@ -1,0 +1,31 @@
+<%= form_with scope: :task, url: task_path, method: :put, local:true do |form| %>
+  <h1>Edit task</h1>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.label :tag %><br>
+    <%= form.select :tag, options_for_select(Task.tags.to_a, [@task.tag, @task.tag_before_type_cast]) %>
+  </p>
+
+  <p>
+    <%= form.label :expire_on %><br>
+    <%=form.text_field :expire_on, placeholder: 'example: 2020-05-11 17:00'%>
+  </p>
+
+  <p>
+    <%= form.label :done %><br>
+    <%=form.select :done, options_for_select([true ,false]) %>
+  </p>
+
+  <p>
+    <%= form.submit "Update" %>
+  </p>
+<%end %>
