@@ -1,5 +1,6 @@
 <%= form_with scope: :task, url: task_path, method: :put, local:true do |form| %>
-  <h1>Edit task</h1>
+  <div style="text-align: center;">
+    <h1>Edit task</h1>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -28,4 +29,5 @@
   <p>
     <%= form.submit "Update" %>
   </p>
+    </div>
 <%end %>
