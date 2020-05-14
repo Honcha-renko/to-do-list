@@ -1,34 +1,47 @@
 <header>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
 </header>
 <body>
-<center>
+<div class="container">
+<div class="jumbotron text-center">
+
 <h1>Tasks</h1>
-<%= link_to "New", new_task_path, method: :get%>
-<table>
+
+   <%= link_to "New", new_task_path, method: :get, :class => "btn btn-primary"%>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
   <tr>
     <th>Title</th>
     <th>Tag</th>
     <th>Expire on</th>
-    <th></th>
   </tr>
 
+  <div class="btn-group">
   <% @tasks.each do |task| %>
     <tr>
       <% if task.done %>
-        <td style="background: aquamarine; text-decoration: line-through;"><%= task.title %></td>
+        <td class="success" style="text-decoration: line-through;"><%= task.title %></td>
       <% else %>
         <td><%= task.title %></td>
       <% end %>
       <td><%= task.tag %></td>
       <td><%= task.expire_on.strftime("%F %R") unless task.expire_on.nil? %></td>
-      <td><%= link_to 'Show', task_path(task) %></td>
-      <td><%= link_to 'Edit', edit_task_path(task), method: :get %></td>
-      <td><%= link_to "Delete", task, method: :delete %></td>
+      <td><%= link_to 'Show', task_path(task), :class => "btn btn-primary" %>
+        <%= link_to 'Edit', edit_task_path(task), method: :get, :class => "btn btn-primary" %>
+            <%= link_to "Delete", task, method: :delete, :class => "btn btn-primary" %></td>
     </tr>
+    </div>
+
   <% end %>
 </table>
-  </center>
+
+</div>
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -1,4 +1,15 @@
-<div style="text-align: center; word-wrap: break-word">
+<header>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+</header>
+
+<div class="container">
+  <div class="jumbotron text-center" style="word-wrap: break-word">
+
+
     <p>
       <strong>Title:</strong>
       <%= @task.title %>
@@ -23,5 +34,8 @@
       <strong>Expire on:</strong>
       <%= @task.expire_on.strftime("%F %T") unless @task.expire_on.nil? %>
     </p>
-    <%= link_to "Back", tasks_path%>
+
+    <%= link_to "Back", tasks_path, :class => "btn-lg btn-primary" %>
+
+</div>
 </div>
